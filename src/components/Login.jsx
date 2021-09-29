@@ -28,7 +28,7 @@ const Login = (props) => {
     httpClient.post('auth/login', formData).then((res) => {
       sessionStorage.setItem('token', res.data.jwt);
       const userInfo = decode(res.data.jwt);
-      dispatch(authSlice.actions.login(userInfo));
+      dispatch(authSlice.actions.login({ userInfo, token: res.data.jwt }));
 
       const redirectPath = props.location.state?.returnUrl;
 

@@ -15,7 +15,7 @@ function App() {
 
     if (!authStatus.isLoggedIn && token && isAlive(token)) {
       const userInfo = decode(token);
-      dispatch(authSlice.actions.login(userInfo));
+      dispatch(authSlice.actions.login({ userInfo, token }));
     }
   }, []);
 
