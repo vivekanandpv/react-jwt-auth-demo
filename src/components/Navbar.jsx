@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { authSlice } from '../redux-store/auth-slice';
 
 const Navbar = (props) => {
@@ -30,19 +31,19 @@ const Navbar = (props) => {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav'>
             <li className='nav-item active'>
-              <a className='nav-link' href='#'>
-                Home <span className='sr-only'>(current)</span>
-              </a>
+              <NavLink to='/' activeClassName='active'>
+                <span className='nav-link'>Home</span>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>
-                Features
-              </a>
+              <NavLink to='/authenticated' activeClassName='active'>
+                <span className='nav-link'>Authenticated</span>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>
-                Pricing
-              </a>
+              <NavLink to='/login' activeClassName='active'>
+                <span className='nav-link'>Login</span>
+              </NavLink>
             </li>
           </ul>
           <button

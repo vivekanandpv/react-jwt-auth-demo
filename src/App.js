@@ -21,8 +21,8 @@ function App() {
 
   return (
     <Fragment>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Container />
       </BrowserRouter>
     </Fragment>
