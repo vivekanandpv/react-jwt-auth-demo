@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { httpClient } from '../http/http-client';
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Login = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    httpClient.post('auth/login', formData);
     console.log(formData);
   };
 
