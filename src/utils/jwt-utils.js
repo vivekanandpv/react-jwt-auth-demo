@@ -17,3 +17,14 @@ export function isAlive(payload) {
 
   return now <= expiry;
 }
+
+export function isInRole(role, userInfo) {
+  console.log(role, userInfo);
+  if (userInfo && userInfo.ROLE) {
+    return Array.isArray(userInfo.ROLE)
+      ? userInfo.ROLE.find((r) => r === role)
+      : userInfo.ROLE === role;
+  }
+
+  return false;
+}

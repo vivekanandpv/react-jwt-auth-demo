@@ -31,18 +31,23 @@ const Navbar = (props) => {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav'>
             <li className='nav-item active'>
-              <NavLink to='/' activeClassName='active'>
+              <NavLink exact to='/' activeClassName='active'>
                 <span className='nav-link'>Home</span>
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink to='/authenticated' activeClassName='active'>
+              <NavLink exact to='/authenticated' activeClassName='active'>
                 <span className='nav-link'>Authenticated</span>
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink to='/login' activeClassName='active'>
+              <NavLink exact to='/login' activeClassName='active'>
                 <span className='nav-link'>Login</span>
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink exact to='/authorized' activeClassName='active'>
+                <span className='nav-link'>Authorized</span>
               </NavLink>
             </li>
           </ul>
