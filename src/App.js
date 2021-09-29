@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Container from './components/Container';
+import Navbar from './components/Navbar';
 
 function App() {
-  return <h3>React Auth Demo</h3>;
+  return (
+    <Fragment>
+      <Navbar />
+      <BrowserRouter>
+        <Container />
+      </BrowserRouter>
+    </Fragment>
+  );
 }
 
 export default App;
