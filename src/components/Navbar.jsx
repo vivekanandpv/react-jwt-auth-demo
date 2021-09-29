@@ -1,6 +1,15 @@
 import React, { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { authSlice } from '../redux-store/auth-slice';
 
 const Navbar = (props) => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    dispatch(authSlice.actions.logout());
+  };
+
   return (
     <Fragment>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -36,6 +45,12 @@ const Navbar = (props) => {
               </a>
             </li>
           </ul>
+          <button
+            className='btn btn-primary btn-sm ml-auto'
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </Fragment>

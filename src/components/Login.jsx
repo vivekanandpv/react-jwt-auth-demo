@@ -1,11 +1,18 @@
 import React, { Fragment, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { httpClient } from '../http/http-client';
+import { authSlice } from '../redux-store/auth-slice';
+import { decode } from '../utils/jwt-utils';
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const dispatch = useDispatch();
+  const authStatus = useSelector((state) => state.auth);
 
   const inputHandler = (e) => {
     setFormData((state) => {
@@ -15,13 +22,18 @@ const Login = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    httpClient.post('auth/login', formData);
+    httpClient.post('auth/login', formData).then((res) => {
+      sessionStorage.setItem('token', res.data.jwt);
+      const userInfo = decode(res.data.jwt);
+      dispatch(authSlice.actions.login(userInfo));
+    });
     console.log(formData);
   };
 
   return (
     <Fragment>
       <h3>Login</h3>
+      <pre>{JSON.stringify(authStatus, null, 2)}</pre>
       <hr />
       <form onSubmit={submitHandler}>
         <div className='form-group'>
