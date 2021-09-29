@@ -1,0 +1,1 @@
+npm i bootstrap@4 @reduxjs/toolkit react-redux react-router-dom
