@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { appStore } from '../redux-store/store';
 
-const store = appStore;
-
 export const httpClient = axios.create({
   baseURL: 'http://localhost:8080/api/v1/',
 });
