@@ -12,7 +12,10 @@ const AuthenticatedRoute = ({ component: Component, role, ...rest }) => {
           if (!authStatus.isLoggedIn) {
             return (
               <Redirect
-                to={{ pathname: '/login', state: { from: props.location } }}
+                to={{
+                  pathname: '/login',
+                  state: { returnUrl: props.location.pathname },
+                }}
               />
             );
           }

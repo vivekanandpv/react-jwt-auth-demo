@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { httpClient } from '../http/http-client';
 import { authSlice } from '../redux-store/auth-slice';
 import { decode } from '../utils/jwt-utils';
@@ -10,6 +11,8 @@ const Login = (props) => {
     username: '',
     password: '',
   });
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth);
@@ -26,8 +29,13 @@ const Login = (props) => {
       sessionStorage.setItem('token', res.data.jwt);
       const userInfo = decode(res.data.jwt);
       dispatch(authSlice.actions.login(userInfo));
+
+      const redirectPath = props.location.state?.returnUrl;
+
+      if (redirectPath) {
+        history.push(redirectPath);
+      }
     });
-    console.log(formData);
   };
 
   return (
