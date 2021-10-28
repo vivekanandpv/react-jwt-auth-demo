@@ -2,7 +2,7 @@ import axios from 'axios';
 import { appStore } from '../redux-store/store';
 
 export const httpClient = axios.create({
-  baseURL: 'http://localhost:8080/api/v1/',
+  baseURL: 'http://localhost:5000/api/v1/',
 });
 
 httpClient.interceptors.request.use(

@@ -20,10 +20,10 @@ export function isAlive(payload) {
 
 export function isInRole(role, userInfo) {
   console.log(role, userInfo);
-  if (userInfo && userInfo.ROLE) {
-    return Array.isArray(userInfo.ROLE)
-      ? userInfo.ROLE.find((r) => r === role)
-      : userInfo.ROLE === role;
+  if (userInfo && userInfo.Roles) {
+    return Array.isArray(userInfo.Roles)
+      ? userInfo.Roles.find((r) => r === role)
+      : userInfo.Roles === role;
   }
 
   return false;
